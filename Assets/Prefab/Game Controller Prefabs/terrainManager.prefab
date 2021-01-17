@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5041011322323348249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1948081261141103161}
+  - component: {fileID: 349916996997698246}
+  m_Layer: 0
+  m_Name: terrainManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1948081261141103161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041011322323348249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.152903, y: 0.9761741, z: -10.226257}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &349916996997698246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041011322323348249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9ae26cc7b932b40aa2cd2a673fd2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grass: {fileID: 6928528843736251244, guid: c31286b32e0337644a427883764b8a13, type: 3}
+  sand: {fileID: 6631857366611416374, guid: 7645265b27635f246ae74e72b0d72a0d, type: 3}
+  transitionPiece: {fileID: 3762490635207806302, guid: 77d218787d021914db7ebf91585e05cf,
+    type: 3}
+  transitionRoad: {fileID: 391095199366629945, guid: 32df42494e25194449af6ea2e65a5796,
+    type: 3}
+  grassHZRoad: {fileID: 6257294943533704840, guid: efefca9a35cb0f84883b5197a6eec251,
+    type: 3}
+  grassVTRoad: {fileID: 4388781629598404356, guid: ed2e402e2d275164fb2df3d32800a49b,
+    type: 3}
+  sandHZRoad: {fileID: 1173309957202107806, guid: 3fd8e9b158a367249afba2df1cad99bf,
+    type: 3}
+  sandVTRoad: {fileID: 3325226986497860636, guid: 05d150479f9c60d4791b3c229a3bd659,
+    type: 3}
+  grassRTDNTurn: {fileID: 5751557462215791611, guid: 608235d77a66f58458c2709e30fdb2ca,
+    type: 3}
+  grassRTUPTurn: {fileID: 2524091731012728649, guid: 4685bcfb0259b0043be521ca21977a70,
+    type: 3}
+  sandLTDNTurn: {fileID: 1984615819615962190, guid: f9c46c873fbcb624a8e28d3a6bd7a01f,
+    type: 3}
+  sandLTUPTurn: {fileID: 1932385162844562824, guid: 3b0774474c6951048bbc8074623eb97d,
+    type: 3}

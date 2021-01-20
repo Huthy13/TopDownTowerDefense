@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class fieldSetup : MonoBehaviour
 {
@@ -24,14 +25,22 @@ public class fieldSetup : MonoBehaviour
     GameObject intrusionGUI;
 
     //level variables
-    private int initialCash = 100;
-    private int troopsPerWave = 10;
-    private int intrusionLimit = 10;
+    private int initialCash;
+    private int troopsPerWave;
+    private int intrusionLimit;
 
 
 
     void Start()
     {
+
+        ILevel currentLevel = GameData.Instance.getCurrLvlData();
+
+        initialCash = currentLevel.getInitialCash();
+        troopsPerWave = currentLevel.getTroopsPerWave();
+        intrusionLimit = currentLevel.getIntrusionLimit();
+        
+        
         //instatiate the wave manager & the tower manager
 
         this.setupWallet();
@@ -43,13 +52,19 @@ public class fieldSetup : MonoBehaviour
 
         intrusionGUI = GameObject.Find("intrusion");
 
+
+
+
+
+
         this.stat = status.running;
 
     }
 
     void Update()
     {
-        if(this.stat == status.running){
+        
+        if (this.stat == status.running){
             checkWaveStatus();
 
             //update gui for intruders
@@ -66,6 +81,8 @@ public class fieldSetup : MonoBehaviour
         if (this.stat == status.finished)
         {
             this.towers.GetComponent<towerManager>().pause();
+            SceneManager.LoadScene("LevelSelectorScene", LoadSceneMode.Single);
+           
         }
 
     }

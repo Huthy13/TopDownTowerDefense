@@ -60,9 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameData.cs" />
     <Compile Include="Assets\Scripts\fieldSetup.cs" />
     <Compile Include="Assets\Scripts\levelCashManager.cs" />
     <Compile Include="Assets\Scripts\levelLoader.cs" />
+    <Compile Include="Assets\Scripts\levelScripts\ILevel.cs" />
+    <Compile Include="Assets\Scripts\levelScripts\Level_1.cs" />
+    <Compile Include="Assets\Scripts\levelScripts\Level_2.cs" />
+    <Compile Include="Assets\Scripts\levelSelCamScript.cs" />
     <Compile Include="Assets\Scripts\roundScript.cs" />
     <Compile Include="Assets\Scripts\SplashScreen.cs" />
     <Compile Include="Assets\Scripts\tankScript.cs" />

@@ -41,8 +41,6 @@ public class towerManager : MonoBehaviour
                     {
                         Debug.Log("not enough cash");
                     }
-
-
                 }
             }
         }
@@ -81,8 +79,7 @@ public class towerManager : MonoBehaviour
 
 
     private void placeTower(Transform newObjPos)
-    {
-        
+    {  
         //instantiate new nower
         GameObject newTower1 = Instantiate(tower) as GameObject;
         //add the tower to the towers list
@@ -91,7 +88,5 @@ public class towerManager : MonoBehaviour
         newTower1.GetComponent<Transform>().position = (newObjPos.position + new Vector3(0f, 0f, -1.0f));
         //assign the current wave to the tower
         newTower1.GetComponent<towerBase>().setenemyUnits(this.wave.GetComponent<waveManager>().getWave());
-
-
     }
 }

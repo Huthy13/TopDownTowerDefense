@@ -38,7 +38,6 @@ public class waveManager : MonoBehaviour
             this.wave[i].GetComponent<tankScript>().setWallet(this.wallet);
             this.wave[i].GetComponent<Transform>().position = new Vector3(path[0, 0], path[0, 1], -0.01f);
         }
-        //startWave(numOfTroops);
     }
 
 

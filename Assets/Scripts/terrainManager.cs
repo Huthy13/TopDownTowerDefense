@@ -24,36 +24,39 @@ public class terrainManager : MonoBehaviour
     private Dictionary<int, GameObject> tileValue = new Dictionary<int, GameObject>();
 
 
-
-    private static int fieldHeight = 8;
-    private static int fieldWidth = 15;
-
-    public GameObject[,] field = new GameObject[fieldWidth, fieldHeight];
-
-
-    public int[,] template =   {{001,001,001,001,001,103,001,002,000,000,000,000,000,000,000},
-                                {001,001,001,001,001,103,001,002,000,000,000,000,000,000,000},
-                                {001,001,001,001,001,112,102,200,100,100,100,110,000,000,000},
-                                {001,001,001,001,001,001,001,002,000,000,000,101,000,000,000},
-                                {001,001,001,001,001,001,001,002,000,000,000,101,000,000,000},
-                                {001,001,113,102,102,102,102,200,100,100,100,111,000,000,000},
-                                {001,001,103,001,001,001,001,002,000,000,000,000,000,000,000},
-                                {001,001,103,001,001,001,001,002,000,000,000,000,000,000,000},
-                                };
-
-
-
     //scaling and field setup
     private Vector3 startingPos = new Vector3(-9f, 4.5f, 0f);
     private float widthScale = 1.28f;
     private float heightScale = -1.28f;
 
+    //the variables to build the map
+    private int[,] mapTemplate;
+    private ILevel currentLevel;
+    private GameObject[,] field;
+
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //build dictionary
+        //Setup GameData Singleton
+        currentLevel = GameData.Instance.getCurrLvlData();
+
+        //Grab the map template from the Game Data
+        this.mapTemplate = currentLevel.getMapTemplate();
+
+        //Make all the empty GameObjects for the tiles
+        this.field = new GameObject[this.mapTemplate.GetLength(1), this.mapTemplate.GetLength(0)];
+        
+        this.buildDictionary();
+        this.createMapObjects();
+
+    }
+
+    private void buildDictionary()
+    {
+        //build dictionary to relate tile codes to gameobjects 
         tileValue.Add(1, grass);
         tileValue.Add(0, sand);
         tileValue.Add(2, transitionPiece);
@@ -67,14 +70,16 @@ public class terrainManager : MonoBehaviour
         tileValue.Add(110, sandLTDNTurn);
         tileValue.Add(111, sandLTUPTurn);
 
+    }
 
+    private void createMapObjects()
+    {
         // Instantiate field.
-        for (int i = 0; i < fieldWidth; i++)
+        for (int i = 0; i < this.mapTemplate.GetLength(1); i++)
         {
-            for (int j = 0; j < fieldHeight; j++)
+            for (int j = 0; j < this.mapTemplate.GetLength(0); j++)
             {
-                myPrefab = tileValue[template[j, i]];
-
+                myPrefab = tileValue[this.mapTemplate[j, i]];
 
                 field[i, j] = Instantiate(myPrefab) as GameObject;
                 field[i, j].GetComponent<Transform>().position = (startingPos + new Vector3(i * widthScale, j * heightScale, 0.0f));

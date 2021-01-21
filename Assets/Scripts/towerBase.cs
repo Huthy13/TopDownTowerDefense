@@ -16,7 +16,7 @@ public class towerBase : MonoBehaviour
     private bool charged;            //status of gun if avaiable to shoot
     private float chargeTimer;       //timer to track game timer
     private GameObject enemyUnits;   //holding spot for enemy units 
-    private GameObject[] waveOfUnits;
+    private List<GameObject> waveOfUnits;
 
     //test vars
     private int roundCount = 0;     //var just for troubleshooting
@@ -29,7 +29,7 @@ public class towerBase : MonoBehaviour
     }
 
     //called from outside to update the incoming enemys
-    public void setenemyUnits(GameObject[] enemyUnits)
+    public void setenemyUnits(List<GameObject> enemyUnits)
     {
         this.waveOfUnits = enemyUnits;
     }
@@ -97,7 +97,7 @@ public class towerBase : MonoBehaviour
     private GameObject getTarget()
     {
         //loop through troops
-        for (int i = 0; i < this.waveOfUnits.Length; i++)
+        for (int i = 0; i < this.waveOfUnits.Count; i++)
         {
             //check if unit is dead
             if (waveOfUnits[i].GetComponent<tankScript>().isTargetable())

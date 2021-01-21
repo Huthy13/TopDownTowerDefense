@@ -7,7 +7,8 @@ public class waveManager : MonoBehaviour
     public GameObject tank;
     private GameObject wallet;
 
-    private GameObject[] wave;
+
+    private List<GameObject> wave = new List<GameObject>(); 
 
     private bool waveDone = false;
     private bool waveActive = false;
@@ -30,11 +31,17 @@ public class waveManager : MonoBehaviour
 
     void Awake()
     {
-        //number of troops is set statically this will need to change....
-        int numOfTroops = 10;
-        this.wave = new GameObject[numOfTroops];
+
+        ILevel currentLevel = GameData.Instance.getCurrLvlData();
+
+        int numOfTroops = currentLevel.getTroopsPerWave();
+
+        Debug.Log("Troops in wave: " + numOfTroops);
+        
+        
+        //this.wave = new GameObject[numOfTroops];
         for (int i = 0; i < numOfTroops; i++){
-            this.wave[i] = Instantiate(tank) as GameObject;
+            this.wave.Add(Instantiate(this.tank) as GameObject);
             this.wave[i].GetComponent<tankScript>().setWallet(this.wallet);
             this.wave[i].GetComponent<Transform>().position = new Vector3(path[0, 0], path[0, 1], -0.01f);
         }
@@ -65,7 +72,7 @@ public class waveManager : MonoBehaviour
     //set up the troop inital spacing
     private void setUpTroops()
     {
-        if (waveActivateIndex < this.wave.Length)
+        if (waveActivateIndex < this.wave.Count)
         {
             if (Time.time > this.waveTime)
             {
@@ -81,7 +88,7 @@ public class waveManager : MonoBehaviour
     {
         bool flag = false;
 
-        for (int i = 0; i < wave.Length; i++)
+        for (int i = 0; i < wave.Count; i++)
         {
             if(wave[i].GetComponent<tankScript>().getLifeStat())
             {
@@ -96,7 +103,7 @@ public class waveManager : MonoBehaviour
     }
 
     //returns the active wave gameobjects
-    public GameObject[] getWave()
+    public List<GameObject> getWave()
     {
         return this.wave;
     }
@@ -116,7 +123,7 @@ public class waveManager : MonoBehaviour
     //destroy all the troops in the wave when we destroy the wave
     public void OnDestroy()
     {
-        for (int i = wave.Length - 1 ; i > -1; i--)
+        for (int i = wave.Count - 1 ; i > -1; i--)
         {
             Destroy(this.wave[i]);
         }

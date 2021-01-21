@@ -6,8 +6,8 @@ public class Level_1: MonoBehaviour, ILevel
 {
     //basic level variables
     private int initialCash = 100;
-    private int troopsPerWave = 10;
-    private int intrusionLimit = 10;
+    private int troopsPerWave = 5;
+    private int intrusionLimit = 9;
 
     //map layout
     private int[,] mapTemplate =   {{001,001,001,001,001,103,001,002,000,000,000,000,000,000,000},

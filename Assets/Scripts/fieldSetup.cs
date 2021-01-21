@@ -45,16 +45,10 @@ public class fieldSetup : MonoBehaviour
 
         this.setupWallet();
         this.setupTowers();
-        
+       
         this.terrain = Instantiate(terrainManager) as GameObject;
-
         this.createNewWave();
-
         intrusionGUI = GameObject.Find("intrusion");
-
-
-
-
 
 
         this.stat = status.running;
